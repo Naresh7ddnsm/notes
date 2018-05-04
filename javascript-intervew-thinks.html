@@ -1,0 +1,48 @@
+#Question: How would you verify a prime number?
+	Answer: a prime number is only divisible by itself and 1. So, i will run a while loop and increase by 1. 
+	
+/******/
+function isPrime(n){
+  var divisor = 2;
+
+  while (n > divisor){
+    if(n % divisor == 0){
+     return false; 
+    }
+    else
+      divisor++;
+  }
+  return true;
+}
+
+> isPrime(137);
+  = true
+> isPrime(237);
+  = false
+  
+/******/
+
+#Way 2
+
+function isPrime(n)
+{
+  var divisor = 3, 
+      limit = Math.sqrt(n);
+  
+  //check simple cases
+  if (n == 2 || n == 3)
+     return true;
+  if (n % 2 == 0)
+     return false;
+
+  while (divisor <= limit)
+  {
+    if (n % divisor == 0)
+      return false;
+    else
+      divisor += 2;
+  }
+  return true;
+}
+
+More: 	yes. the divisor are increased 1 at a time. after 3 i can increase by 2. if a number is divisible by any even number, it will be divisible by 2. if you dont have to increase the divisor up to the number. you can stop much earlier. let me explain it in the following steps

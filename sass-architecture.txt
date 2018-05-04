@@ -1,0 +1,63 @@
+Best Practice Sass
+
+1. Structure Your Sass
+vendor/
+/* VENDOR - Default fall-backs and external files.
+
+base/
+/* BASE - Base Variable file along with starting point Mixins and Placeholders.
+
+framework/
+/* FRAMEWORK - Structure and layout files.
+
+modules/
+/* MODULES - Re-usable site elements.
+
+globle.scss
+
+
+2. Use Sass Variables More Effectively
+
+Variables are one of the more straightforward features of Sass but are still on occasion used incorrectly. Creating a site-wide naming convention is essential when working with Variables. Without one, they become harder to understand and re-use.
+
+Here are some tips for creating useful variables:
+
+Don’t be to vague when naming your Variables.
+Have and stick to a naming convention (Modular, BEM, etc.)
+Ensure the variable use is justified.
+
+
+3. Reduce Mixin Usage
+
+A mixin is a great way to include sections of code multiple times within a site. However, including a mixin is the same as copying and pasting the styles throughout the CSS file. It creates a mass of duplicate code and can bloat your CSS file.
+A mixin therefore should only be used if an argument is present, to quickly create modified styles.
+
+
+4. Embrace Placeholders
+
+Unlike mixins, placeholders can be used multiple times without adding any duplicate code. This makes them a much friendlier option for outputting DRY CSS:
+
+
+5. Use Functions for Calculations
+
+Functions are used to perform calculations. A Sass function does not output any CSS. Instead, it returns a value that can be used in the CSS. This is useful for calculations that will be made throughout the site.
+
+
+6. Order Your Work
+
+Place all mixins, functions, placeholders and variables in their relevant partial file. Keeping blocks of code together will ensure they are easy to edit and reuse in the future.
+Site-wide elements should be kept together in a base folder. The base folder should contain global variables such as fonts and colour schemes:
+
+
+7. Limit Nesting
+
+	1.Never go more then 3 levels deep.
+	2.Ensure the CSS output is clean and reusable.
+	3.Use nesting when it makes sense to, not as a default option.
+	
+
+8. Keep Things Simple
+
+The concluding point I’ll make in this post is to keep things as simple as possible. The purpose of Sass is to write cleaner more manageable CSS. Before creating any new mixins, variables, or functions, ensure that their presence will enhance development and not overcomplicate things. All Sass features are useful when used in the correct situations and in moderation.
+
+Creating an endless list of variables without clear usage, or a complex function that is difficult to understand for anyone other than the author is not the intention and will not aid development or produce DRY CSS.

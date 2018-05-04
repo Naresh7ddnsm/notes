@@ -1,0 +1,24 @@
+What’s the module pattern?
+
+“Modules are an integral piece of any robust application’s architecture and typically help in keeping the units of code for a project both cleanly separated and organized.”
+– Definition from the book Learning Javascript Design-Patterns written by Addy Osmani
+
+
+robust - உறுதியானதாகவும் / வலுவான
+integral - ஒருங்கிணைந்த
+
+
+The main benefits of those modules are
+1.Maintainability
+2.Namespacing
+3.Reusability
+
+
+Why do I need modules in my stylesheets?
+
+Simply for the same reasons mentioned above. Most stylesheets are a mess, especially because they are shared in a global scope and there is currently no good way to get around this, unless you can use CSSModules in your project. “SCSS modules” are just useful for mixins, functions and variables as they do not generate any CSS code after compilation. 
+
+The biggest advantages of the module pattern in stylesheets are:
+
+1. You do not need to import your stylesheets in a specific order anymore
+2. You know the exact dependencies of every file

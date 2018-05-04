@@ -1,0 +1,103 @@
+#Question: How would you verify a prime number?
+	Answer: a prime number is only divisible by itself and 1. So, i will run a while loop and increase by 1. 
+	
+/******/
+function isPrime(n){
+  var divisor = 2;
+
+  while (n > divisor){
+    if(n % divisor == 0){
+     return false; 
+    }
+    else
+      divisor++;
+  }
+  return true;
+}
+
+> isPrime(137);
+  = true
+> isPrime(237);
+  = false
+  
+/******/
+
+#Way 2
+
+function isPrime(n)
+{
+  var divisor = 3, 
+      limit = Math.sqrt(n);
+  
+  //check simple cases
+  if (n == 2 || n == 3)
+     return true;
+  if (n % 2 == 0)
+     return false;
+
+  while (divisor <= limit)
+  {
+    if (n % divisor == 0)
+      return false;
+    else
+      divisor += 2;
+  }
+  return true;
+}
+
+> isPrime(137);
+  = true
+> isPrime(237);
+  = false
+  
+
+More: 	yes. the divisor are increased 1 at a time. after 3 i can increase by 2. if a number is divisible by any even number, it will be divisible by 2. if you dont have to increase the divisor up to the number. you can stop much earlier. let me explain it in the following steps
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Prime Factors
+A prime number can only be divided by 1 or itself, so it cannot be factored any further! Every other whole number can be broken down into prime number factors. It is like the Prime Numbers are the basic building blocks of all numbers.
+
+function primeFactors(n){
+  var factors = [], 
+      divisor = 2;
+  
+  while(n>2){
+    if(n % divisor == 0){
+       factors.push(divisor); 
+       n= n/ divisor;
+    }
+    else{
+      divisor++;
+    }     
+  }
+  return factors;
+}
+
+> primeFactors(69);
+  = [3, 23]
+  
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Fibonacci
+In mathematics, the Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones: 1 , 1 , 2 , 3 , 5 , 8 , 13 , 21 , 34 , 55 , 89 , 144 
+
+function fibonacci(n){
+  var fibo = [0, 1];
+  
+  if (n <= 2) return 1;
+
+  for (var i = 2; i <=n; i++ ){
+   fibo[i] = fibo[i-1]+fibo[i-2];
+  }
+
+ return fibo[n];
+} 
+
+or
+
+function fibonacci(n){
+  if(n<=1)
+    return n;
+  else
+    return fibonacci(n-1) + fibonacci (n-2);  
+}
