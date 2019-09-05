@@ -1,0 +1,7 @@
+To Commit all files 
+git commit -a
+
+
+To commit modified files
+git commit -m
+

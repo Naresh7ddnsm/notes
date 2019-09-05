@@ -1,0 +1,18 @@
+
+
+
+Useful URLs
+https://www.emailonacid.com/blog/article/email-development/mastering-alt-text-in-email/
+
+
+Style Support by Email Clients
+https://www.campaignmonitor.com/css/style-element/style-in-body/
+
+
+1. mjml email editor
+2. Foundation for Email 2
+3. Postcards
+https://designmodo.com/postcards/app/
+
+4. EmailBulder
+5. https://unlayer.com/ (React email editer)

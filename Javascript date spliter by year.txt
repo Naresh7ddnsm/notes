@@ -1,0 +1,39 @@
+var date = ['09-20-2017', '09-26-2018', '09-27-2018', '09-26-2019'];
+var mL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var final = [];
+
+function getDateInfo(date){
+	var _date = new Date(date),
+  		$fullYear = _date.getFullYear(),
+      $month = _date.getMonth(),
+      $date = _date.getDate();
+      
+      return {
+      	year: $fullYear,
+        month: $month,
+        date: $date,
+        mName: mL[$month],
+      }
+}
+function updateYear(o){
+	if(!final[o.year]){
+  	final[o.year] = [];
+  } 
+}
+function updateMonth(o){
+	if(final[o.year][o.mName]){
+    		final[o.year][o.mName].push(o.date)
+    } else {
+    	final[o.year][o.mName] = [];
+      final[o.year][o.mName].push(o.date)
+    }
+}
+function updateFinal(o){
+	updateYear(o);
+  updateMonth(o);
+}
+$.each(date, function(i, date){
+	var info = getDateInfo(date);
+	  updateFinal(info);
+    console.log(final)
+})

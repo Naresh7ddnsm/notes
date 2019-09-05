@@ -19,13 +19,14 @@ globle.scss
 2. Use Sass Variables More Effectively
 
 Variables are one of the more straightforward features of Sass but are still on occasion used incorrectly. Creating a site-wide naming convention is essential when working with Variables. Without one, they become harder to understand and re-use.
+occasion - எப்போதாவது
 
 Here are some tips for creating useful variables:
 
 Don’t be to vague when naming your Variables.
 Have and stick to a naming convention (Modular, BEM, etc.)
 Ensure the variable use is justified.
-
+vague - தெளிவற்ற
 
 3. Reduce Mixin Usage
 

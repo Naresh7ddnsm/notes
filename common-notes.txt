@@ -1,3 +1,56 @@
-react training 
-
+React training x
 https://codesandbox.io/s/j3mmqrm433
+
+***********************************************************************************
+
+Create RestAPI With MongoDB, Express and Mongoose (Working)
+https://www.callicoder.com/node-js-express-mongodb-restful-crud-api-tutorial/
+
+***********************************************************************************
+
+8 Tips To Become A Better Front End Developer ( Nice article )
+https://ihatetomatoes.net/8-tips-become-better-front-end-developer/
+
+***********************************************************************************
+
+CSS hack for IE10, IE11 and webkit browsers
+https://coderwall.com/p/7vatvw/css-hack-for-ie10-ie11-and-webkit-browsers
+
+IE10+ hack
+ @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+  /* IE10+ specific styles go here */  
+}
+
+@media all and (-ms-high-contrast:none){
+	.foo { color: green } /* IE10 */
+	*::-ms-backdrop, .foo { color: red } /* IE11 */
+}
+
+***********************************************************************************
+
+IE Select box remove Arrow
+
+select::-ms-expand {
+    display: none;
+}
+
+
+***********************************************************************************
+
+Javascript Namespace 
+
+https://www.codeproject.com/Articles/829254/JavaScript-Namespace
+
+
+***********************************************************************************
+Webpack config for all type
+
+https://blog.cloudboost.io/learn-how-to-create-a-simple-blog-with-react-node-c05fa6889de3
+
+/********************************************************************************/
+
+Node Authentication  with JWT and Passport
+
+Article : https://medium.freecodecamp.org/learn-how-to-handle-authentication-with-node-using-passport-js-4a56ed18e81e
+
+https://github.com/AntonioErdeljac/passport-tutorial

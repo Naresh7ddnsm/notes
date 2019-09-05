@@ -1,0 +1,23 @@
+AMP Development
+
+How to Validate & Debug AMP Pages
+----------------------------------
+
+1. Browser development console 
+e.g (URL#development=1)
+
+2. Web Interface
+URL: https://validator.ampproject.org
+
+3. Browser Extention
+AMP Validtor
+
+
+What's Allowed in AMP and What Isn't?
+--------------------------------------
+
+Most Have
+
+a. <html AMP />
+b. <meta charset="utf-8" />
+

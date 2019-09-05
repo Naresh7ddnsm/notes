@@ -1,0 +1,370 @@
+Install MongoDB On Windows
+
+1. Install Mongodb exe file
+
+# 32-bit versions of MongoDB only support databases smaller than 2GB and suitable only for testing and evaluation purposes.
+
+Setup the Database for project.
+
+MongoDB requires a data folder to store its files. The default location for the MongoDB data directory is c:\data\db. So you need to create this folder using the Command Prompt. Execute the following command sequence.
+
+C:\>md data
+C:\md data\db
+
+If you have to install the MongoDB at a different location, then you need to specify an alternate path for \data\db by setting the path dbpath in mongod.exe. For the same, issue the following commands.
+
+# Go to mongodb directory upto able to access mongod.exe, and run the below command for set the custom database to store a data.
+
+C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe --dbpath "d:\data\db"
+
+This will show waiting for connections message on the console output, which indicates that the mongod.exe process is running successfully.
+
+
+# Now to run the MongoDB, you need to open another command prompt and issue the following command.
+
+C:\Program Files\MongoDB\Server\3.2\bin\mongo.exe
+
+Now mongo shell will start
+
+____________________________________________________________________
+
+# Some considerations while designing Schema in MongoDB
+considerations - பரிசீலனைகள்
+
+-> Design your schema according to user requirements.
+-> Combine objects into one document if you will use them together. Otherwise separate them (but make sure there should not be need of joins).
+-> Duplicate the data (but limited) because disk space is cheap as compare to compute time.
+-> Do joins while write, not on read.
+-> Optimize your schema for most frequent use cases.
+-> Do complex aggregation in the schema.
+
+____________________________________________________________________
+
+# MongoDB - Create Database
+
+MongoDB use DATABASE_NAME is used to create database.
+
+Syntax
+-------
+use DATABASE_NAME
+
+If you want to create a database with name <mydb>
+
+use mydb
+switched to db mydb
+
+
+
+# To check currently selected database, use the command db
+> db
+
+____________________________________________________________________
+
+
+# To check databases list, use the command show dbs.
+> show dbs
+
+# Your created database (mydb) is not present in list. 
+To display database, you need to insert at least one document into it.
+Ex: 
+---
+>db.movie.insert({"name":"tutorials point"})
+>show dbs
+
+In MongoDB default database is test. If you didn't create any database, then collections will be stored in test database.
+
+____________________________________________________________________
+
+
+#MongoDB - Drop Database
+
+Syntax
+------
+>db.dropDatabase()
+
+Ex:
+---
+>use mydb
+switched to db mydb
+>db.dropDatabase()
+>{ "dropped" : "mydb", "ok" : 1 }
+>
+
+____________________________________________________________________
+
+# MongoDB - Create Collection
+
+Syntax
+------
+
+> db.createCollection(name, options)
+
+* In the command, name is name of collection to be created. Options is a document and is used to specify configuration of collection.
+
+EX:
+---
+>use test
+switched to db test
+>db.createCollection("mycollection")
+{ "ok" : 1 }
+>
+
+To view Collections
+
+>show collections
+
+* In MongoDB, you don't need to create collection. MongoDB creates collection automatically, when you insert some document.
+
+EX:
+---
+>db.tutorialspoint.insert({"name" : "tutorialspoint"})
+>show collections
+mycol
+mycollection
+system.indexes
+tutorialspoint
+>
+
+____________________________________________________________________
+
+# MongoDB - Drop Collection
+
+Syntax
+------
+db.COLLECTION_NAME.drop()
+
+Ex: 
+---
+>use mydb
+switched to db mydb
+>show collections
+mycol
+mycollection
+system.indexes
+tutorialspoint
+>
+
+Now drop the collection with the name mycollection.
+
+>db.mycollection.drop()
+true
+>
+
+____________________________________________________________________
+
+# MongoDB - Datatypes
+
+-> String
+-> Integer
+-> Boolean
+-> Double − This type is used to store floating point values.
+-> Min/ Max keys − This type is used to compare a value against the lowest and highest BSON elements.
+-> Arrays
+-> Timestamp
+-> Object
+-> Null
+-> Symbol − This datatype is used identically to a string; however, it's generally reserved for languages that use a specific symbol type.
+-> Date
+-> Object ID − This datatype is used to store the document’s ID.
+-> Binary data
+-> Code − This datatype is used to store JavaScript code into the document.
+-> Regular expression
+
+____________________________________________________________________
+
+# MongoDB - Insert Document
+>db.COLLECTION_NAME.insert(document)
+
+Ex:
+---
+>db.mycol.insert({
+   _id: ObjectId(7df78ad8902c),
+   title: 'MongoDB Overview', 
+   description: 'MongoDB is no sql database',
+   by: 'tutorials point',
+   url: 'http://www.tutorialspoint.com',
+   tags: ['mongodb', 'database', 'NoSQL'],
+   likes: 100
+})
+
+In the inserted document, if we don't specify the _id parameter, then MongoDB assigns a unique ObjectId for this document.
+
+_id is 12 bytes hexadecimal number unique for every document in a collection. 12 bytes are divided as follows −
+
+_id: ObjectId(4 bytes timestamp, 3 bytes machine id, 2 bytes process id, 3 bytes incrementer)
+
+
+To insert multiple documents in a single query, you can pass an array of documents in insert() command.
+
+Ex:
+---
+>db.post.insert([
+   {
+      title: 'MongoDB Overview', 
+      description: 'MongoDB is no sql database',
+      by: 'tutorials point',
+      url: 'http://www.tutorialspoint.com',
+      tags: ['mongodb', 'database', 'NoSQL'],
+      likes: 100
+   },
+	
+   {
+      title: 'NoSQL Database', 
+      description: "NoSQL database doesn't have tables",
+      by: 'tutorials point',
+      url: 'http://www.tutorialspoint.com',
+      tags: ['mongodb', 'database', 'NoSQL'],
+      likes: 20, 
+      comments: [	
+         {
+            user:'user1',
+            message: 'My first comment',
+            dateCreated: new Date(2013,11,10,2,35),
+            like: 0 
+         }
+      ]
+   }
+])
+
+____________________________________________________________________
+
+
+# MongoDB - Query Document
+
+Syntax
+------
+>db.COLLECTION_NAME.find()
+
+The pretty() Method
+
+Syntax
+------
+>db.mycol.find().pretty()
+
+Apart from find() method, there is findOne() method, that returns only one document.
+
+-> Equality 
+syntax : {<key>:<value>}
+Ex: db.mycol.find({"by":"tutorials point"}).pretty()
+Mean : where by = 'tutorials point'
+
+-> Less Than
+Syntax : {<key>:{$lt:<value>}}
+Ex: db.mycol.find({"likes":{$lt:50}}).pretty()	
+Mean: where likes < 50
+
+-> Less Than Equals	
+Syntax : {<key>:{$lte:<value>}}	
+Ex: db.mycol.find({"likes":{$lte:50}}).pretty()	
+Mean: where likes <= 50
+
+
+-> Greater Than	
+Syntax : {<key>:{$gt:<value>}}	
+Ex: db.mycol.find({"likes":{$gt:50}}).pretty()	
+Mean: where likes > 50
+
+
+-> Greater Than Equals	
+Syntax : {<key>:{$gte:<value>}}	
+Ex: db.mycol.find({"likes":{$gte:50}}).pretty()	
+Mean: where likes >= 50
+
+
+-> Not Equals	
+Syntax : {<key>:{$ne:<value>}}	
+Ex: db.mycol.find({"likes":{$ne:50}}).pretty()	
+Mean: where likes != 50
+
+
+# AND in MongoDB
+
+Syntax
+------
+>db.mycol.find(
+   {
+      $and: [
+         {key1: value1}, {key2:value2}
+      ]
+   }
+).pretty()
+
+Ex: 
+---
+>db.mycol.find({$and:[{"by":"tutorials point"},{"title": "MongoDB Overview"}]}).pretty() {
+   "_id": ObjectId(7df78ad8902c),
+   "title": "MongoDB Overview", 
+   "description": "MongoDB is no sql database",
+   "by": "tutorials point",
+   "url": "http://www.tutorialspoint.com",
+   "tags": ["mongodb", "database", "NoSQL"],
+   "likes": "100"
+}
+
+
+# OR in MongoDB
+
+Syntax
+------
+>db.mycol.find(
+   {
+      $or: [
+         {key1: value1}, {key2:value2}
+      ]
+   }
+).pretty()
+
+Ex: 
+---
+>db.mycol.find({$or:[{"by":"tutorials point"},{"title": "MongoDB Overview"}]}).pretty()
+{
+   "_id": ObjectId(7df78ad8902c),
+   "title": "MongoDB Overview", 
+   "description": "MongoDB is no sql database",
+   "by": "tutorials point",
+   "url": "http://www.tutorialspoint.com",
+   "tags": ["mongodb", "database", "NoSQL"],
+   "likes": "100"
+}
+>
+
+
+# Using AND and OR Together
+
+Ex: 
+---
+>db.mycol.find({"likes": {$gt:10}, $or: [{"by": "tutorials point"},
+   {"title": "MongoDB Overview"}]}).pretty()
+{
+   "_id": ObjectId(7df78ad8902c),
+   "title": "MongoDB Overview", 
+   "description": "MongoDB is no sql database",
+   "by": "tutorials point",
+   "url": "http://www.tutorialspoint.com",
+   "tags": ["mongodb", "database", "NoSQL"],
+   "likes": "100"
+}
+>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
