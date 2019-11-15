@@ -54,3 +54,10 @@ Node Authentication  with JWT and Passport
 Article : https://medium.freecodecamp.org/learn-how-to-handle-authentication-with-node-using-passport-js-4a56ed18e81e
 
 https://github.com/AntonioErdeljac/passport-tutorial
+
+
+
+*******************************************************************************************
+
+Responsive Equal Height Rows
+https://codepen.io/micahgodbolt/pen/FgqLc

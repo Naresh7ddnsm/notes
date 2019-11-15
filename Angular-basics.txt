@@ -1,0 +1,73 @@
+Install Angular
+
+Step 01: Install Angular CLI
+_____________________________
+Install angular CLI throught Node Package Manager (NPM) by using below command line 
+
+npm install @angular/cli -g (Or) npm i @angular/cli
+
+Step 02: Create New Workspace
+_____________________________
+Angular cli offers you a simple way to creare a new project by using below command Line.
+
+ng new my-app 
+
+Angular CLI Prompts you for the information about the feature to include in the initial phase. 
+So we can choose the option as per the development requirement.
+
+STEP 03: RUN the application
+______________________________
+
+Angular includes a server, so that you can easily build and serve your app locally.
+By run below command line will build your app and open the browser auto.
+
+ng serve --open (-o), --open will open your app in browser.
+
+
+Template syntax:
+_________________
+Angular's template syntax extends HTML and JavaScript.
+Ex:
+<div *ngFor="let product of products">
+</div>
+
+Common Names:
+1. Any directive with an asterisk, *, is a structural directive (*ngIf, *ngFor, ...)
+2. interpolation syntax  - {{ }}
+3. property binding syntax - [ ] 
+4. Event binding syntax - ( ) set of parentheses
+
+
+Interpolation {{ }} lets you render the property value as text; property binding [ ] lets you use the property value in a template expression.
+
+
+@Input: Passes data from parent to child 
+_________________________________________
+
+Import Input from @angular/core.
+
+The @Input() decorator indicates that the property value passes in from the component's parent
+
+In the Parent component, pass the value whatever it type as property binding.
+
+If parent has object below
+
+let product = {
+	"name": "Product",
+	"id": "2"
+}
+
+<app-product-alerts [product]="product"> </app-product-alerts>
+
+Here app-product-alerts is a child component and this component is declared in parent component. we are going to use the @Input decorator in the child component.
+
+
+
+Difference between Constructor and ngOnInit
+______________________________________________
+
+https://stackoverflow.com/questions/35763730/difference-between-constructor-and-ngoninit/35763811#35763811
+
+Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor. The constructor should only be used to initialize class members but shouldn't do actual "work".
+
+So you should use constructor() to setup Dependency Injection and not much else. ngOnInit() is better place to "start" - it's where/when components' bindings are resolved.
